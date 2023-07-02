@@ -21,17 +21,17 @@ kbgame.scene("game", () => {
 		kbgame.opacity(0.5)
 	])
 	const makeBtnTarget = () => {
+		const x = Math.floor((Math.random() * (kbgame.width() - 100))) + 50
+		const y = Math.floor((Math.random() * (kbgame.height() - 100))) + 50
+		console.log(x, y)
 		kbgame.add([
 			"bean",
 			{
 				btnid: "test"
 			},
-			kbgame.pos(
-				Math.floor((Math.random() * kbgame.width()) + 1) - 10,
-				Math.floor((Math.random() * kbgame.height()) + 1) - 10,
-			),
+			kbgame.pos(x, y),
 			kbgame.area({ cursor: "pointer" }),
-			kbgame.circle(30),
+			kbgame.circle(50),
 			colors[Math.floor((Math.random() * 2))]
 		])
 	}

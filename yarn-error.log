@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add -D @types/countdown-js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
   C:\Users\jakev\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jakev\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\jakev\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\jakev\AppData\Local\Programs\Python\Python311;C:\Users\jakev\.console-ninja\.bin;C:\Users\jakev\.cargo\bin;C:\Users\jakev\AppData\Local\Microsoft\WindowsApps;C:\Users\jakev\AppData\Local\Yarn\bin;C:\Users\jakev\AppData\Local\Android\Sdk\platform-tools;C:\Users\jakev\AppData\Roaming\Python\Python311\site-packages;C:\Users\jakev\AppData\Roaming\Python\Python311\Scripts;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,32 +14,24 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fcountdown-js: Not found
-      at params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66145:18)
-      at self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140890:22)
-      at Request.emit (node:events:513:28)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141862:10)
-      at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: EPERM: operation not permitted, unlink 'D:\Projects\aim-game\node_modules\esbuild-serve\node_modules\esbuild\esbuild.exe'
 
 npm manifest: 
   {
   	"name": "aim-game",
   	"scripts": {
   		"build": "esbuild --bundle src/main.ts --outfile=www/main.js --minify",
-  		"dev": "esbuild --bundle src/main.ts --outfile=www/main.js --servedir=www",
+  		"dev": "node esbuild.config.mjs -w",
   		"bundle": "npm run build && mkdir -p dist && zip -r dist/game.zip www -x \"**/.DS_Store\"",
-  		"check": "tsc"
+  		"check": "tsc",
+  		"build-css": "npx tailwindcss -i ./src/style.css -o ./www/style.css --watch --minify"
   	},
   	"dependencies": {
-  		"countdown-js": "^1.0.2",
-  		"kaboom": "^3000.0.14"
+  		"kaboom": "^3000.0.14",
+  		"ms": "^2.1.3"
   	},
   	"devDependencies": {
+  		"@types/ms": "^0.7.31",
   		"esbuild": "^0.18.11",
   		"esbuild-serve": "^1.0.1",
   		"typescript": "^5.1.6"
@@ -164,10 +156,15 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.11.tgz#6526c7e1b40d5b9f0a222c6b767c22f6fb97aa57"
     integrity sha512-rQI4cjLHd2hGsM1LqgDI7oOCYbQ6IBOVsX9ejuRMSze0GqXUG2ekwiKkiBU1pRGSeCqFFHxTrcEydB2Hyoz9CA==
   
-  countdown-js@^1.0.2:
-    version "1.0.2"
-    resolved "https://registry.yarnpkg.com/countdown-js/-/countdown-js-1.0.2.tgz#2a2ef6118de07f06b972b404edb324578044c835"
-    integrity sha512-iHsaMFeHkz0hkxG/96o3REHiQV6K1DOWUUeFbRdSckPgt7cu5Te6YmPiPLpZ57HmFnWnpq5AjYnt5ttSYyZPvA==
+  "@types/ms@^0.7.31":
+    version "0.7.31"
+    resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+    integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+  
+  "@types/ua-parser-js@^0.7.36":
+    version "0.7.36"
+    resolved "https://registry.yarnpkg.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz#9bd0b47f26b5a3151be21ba4ce9f5fa457c5f190"
+    integrity sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==
   
   create-serve@^1.0.1:
     version "1.0.1"
@@ -220,7 +217,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-3000.0.14.tgz#0251c81b9b295507f149dc3803c6768c81cd66cd"
     integrity sha512-9FUfnsBKEjk9TLmwcRJ4ZuIbRMtvbS5eZ5PiymWbFNiCODmIgPtfGxK1QmNj1PNgd6NXx9VpW3RpHq6J2Xx/SQ==
   
+  ms@^2.1.3:
+    version "2.1.3"
+    resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
+    integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
+  
   typescript@^5.1.6:
     version "5.1.6"
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
     integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
+  
+  ua-parser-js@^1.0.35:
+    version "1.0.35"
+    resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.35.tgz#c4ef44343bc3db0a3cbefdf21822f1b1fc1ab011"
+    integrity sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==

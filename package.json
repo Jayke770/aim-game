@@ -2,9 +2,10 @@
 	"name": "aim-game",
 	"scripts": {
 		"build": "esbuild --bundle src/main.ts --outfile=www/main.js --minify",
-		"dev": "esbuild --bundle src/main.ts --outfile=www/main.js --servedir=www",
+		"dev": "node esbuild.config.mjs -w",
 		"bundle": "npm run build && mkdir -p dist && zip -r dist/game.zip www -x \"**/.DS_Store\"",
-		"check": "tsc"
+		"check": "tsc",
+		"build-css": "npx tailwindcss -i ./src/style.css -o ./www/style.css --watch --minify"
 	},
 	"dependencies": {
 		"kaboom": "^3000.0.14",

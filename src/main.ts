@@ -72,7 +72,6 @@ kbgame.scene("game", () => {
 	const btnMaker = kbgame.loop(10, () => timer > 0 && makeBtnTarget())
 	//timer 
 	const timeData = kbgame.loop(1, () => {
-		console.log(timer)
 		if (timer > 0) {
 			timer--
 			timeText.text = formatTime(timer)

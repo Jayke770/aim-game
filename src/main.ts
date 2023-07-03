@@ -77,7 +77,7 @@ kbgame.scene("game", () => {
 		if (timer > 0) makeBtnTarget()
 	})
 	//make btn target every 5 secs 
-	kbgame.loop(3, () => timer > 0 && makeBtnTarget())
+	kbgame.loop(5, () => timer > 0 && makeBtnTarget())
 })
 //main screen 
 kbgame.scene("main", () => {

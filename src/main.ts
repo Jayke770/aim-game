@@ -11,6 +11,7 @@ const colors = [
 	kbgame.color(255, 1, 152),
 	kbgame.color(2, 155, 222)
 ]
+console.log(basePath)
 //images
 kbgame.loadSprite("game-bg", `${basePath ?? ""}/sprites/m-dew.jpg`)
 kbgame.loadSprite("bean", `${basePath ?? ""}/sprites/bean.png`)

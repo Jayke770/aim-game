@@ -66,21 +66,7 @@ kbgame.scene("game", () => {
 			kbgame.opacity(1),
 			colors[Math.floor((Math.random() * 2))]
 		])
-		kbgame.wait(10, () => btn.destroy())
 	}
-	//make btn every 10 sec
-	const btnMaker = kbgame.loop(10, () => timer > 0 && makeBtnTarget())
-	//timer 
-	const timeData = kbgame.loop(1, () => {
-		if (timer > 0) {
-			timer--
-			timeText.text = formatTime(timer)
-		} else {
-			timeData.cancel()
-			btnMaker.cancel()
-			kbgame.wait(3, () => kbgame.go("game-over"))
-		}
-	})
 	makeBtnTarget()
 	kbgame.onClick("btntarget", (btn: BtnTargetObj) => {
 		lastClick = Date.now()
@@ -92,8 +78,21 @@ kbgame.scene("game", () => {
 		btn.destroy()
 		score += 1
 		scoreText.text = `Score: ${score}`
+		if (timer > 0) makeBtnTarget()
+	})
+	//make btn every 10 sec
+	const btnMaker = kbgame.loop(30, () => {
+		if (timer > 0) makeBtnTarget()
+	})
+	//timer 
+	const timeData = kbgame.loop(1, () => {
 		if (timer > 0) {
-			makeBtnTarget()
+			timer--
+			timeText.text = formatTime(timer)
+		} else {
+			timeData.cancel()
+			btnMaker.cancel()
+			kbgame.wait(3, () => kbgame.go("game-over"))
 		}
 	})
 })

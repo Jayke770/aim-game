@@ -53,7 +53,7 @@ kbgame.scene("game", () => {
 	const makeBtnTarget = () => {
 		const x = Math.floor((Math.random() * (kbgame.width() - 100))) + 100
 		const y = Math.floor((Math.random() * (kbgame.height() - 100))) + 100
-		const btn = kbgame.add([
+		kbgame.add([
 			"btntarget",
 			{
 				btnid: "test",

@@ -1,7 +1,7 @@
 import kaboom from "kaboom"
 import ms from 'ms'
 import { BtnTargetObj } from '@/types/game'
-import { formatTime } from '@/src/lib/utils'
+import { formatTime, basePath } from '@/src/lib/utils'
 const kbgame = kaboom({
 	global: false,
 	backgroundAudio: true,
@@ -12,17 +12,17 @@ const colors = [
 	kbgame.color(2, 155, 222)
 ]
 //images
-kbgame.loadSprite("game-bg", "/sprites/m-dew.jpg")
-kbgame.loadSprite("bean", "/sprites/bean.png")
-kbgame.loadSprite("crosshair", "/sprites/crosshair.png")
+kbgame.loadSprite("game-bg", `${basePath ?? ""}/sprites/m-dew.jpg`)
+kbgame.loadSprite("bean", `${basePath ?? ""}/sprites/bean.png`)
+kbgame.loadSprite("crosshair", `${basePath ?? ""}/sprites/crosshair.png`)
 //sound 
-kbgame.loadSound("gun", "/sprites/sounds/shot.mp3")
-kbgame.loadSound("shutgun", "/sprites/sounds/shutgun.mp3")
+kbgame.loadSound("gun", `${basePath ?? ""}/sprites/sounds/shot.mp3`)
+kbgame.loadSound("shutgun", `${basePath ?? ""}/sprites/sounds/shutgun.mp3`)
 //fonts 
-kbgame.loadFont("f1", "/sprites/fonts/f1.ttf")
+kbgame.loadFont("f1", `${basePath ?? ""}/sprites/fonts/f1.ttf`)
 //game screen
 kbgame.scene("game", () => {
-	let score = 0, timer = 10
+	let score = 0, timer = 120
 	kbgame.add([
 		kbgame.sprite("game-bg", { width: kbgame.width(), height: kbgame.height() }),
 		kbgame.opacity(0.5)

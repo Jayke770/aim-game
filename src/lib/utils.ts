@@ -1,3 +1,4 @@
+export const basePath = "www" //leave it blank if not deployed on github pages
 export const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = seconds % 60

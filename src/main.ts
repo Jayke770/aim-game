@@ -12,14 +12,14 @@ const colors = [
 	kbgame.color(2, 155, 222)
 ]
 //images
-kbgame.loadSprite("game-bg", "/sprites/m-dew.jpg")
-kbgame.loadSprite("bean", "/sprites/bean.png")
-kbgame.loadSprite("crosshair", "/sprites/crosshair.png")
+kbgame.loadSprite("game-bg", "sprites/m-dew.jpg")
+kbgame.loadSprite("bean", "sprites/bean.png")
+kbgame.loadSprite("crosshair", "sprites/crosshair.png")
 //sound 
-kbgame.loadSound("gun", "/sprites/sounds/shot.mp3")
-kbgame.loadSound("shutgun", "/sprites/sounds/shutgun.mp3")
+kbgame.loadSound("gun", "sprites/sounds/shot.mp3")
+kbgame.loadSound("shutgun", "sprites/sounds/shutgun.mp3")
 //fonts 
-kbgame.loadFont("f1", "/sprites/fonts/f1.ttf")
+kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 //game screen
 kbgame.scene("game", () => {
 	let score = 0, timer = 120

@@ -81,9 +81,9 @@ kbgame.scene("game", () => {
 		if (timer > 0) makeBtnTarget()
 	})
 	//make btn every 10 sec
-	const btnMaker = kbgame.loop(30, () => {
-		if (timer > 0) makeBtnTarget()
-	})
+	// const btnMaker = kbgame.loop(30, () => {
+	// 	if (timer > 0) makeBtnTarget()
+	// })
 	//timer 
 	const timeData = kbgame.loop(1, () => {
 		if (timer > 0) {
@@ -91,7 +91,7 @@ kbgame.scene("game", () => {
 			timeText.text = formatTime(timer)
 		} else {
 			timeData.cancel()
-			btnMaker.cancel()
+			// btnMaker.cancel()
 			kbgame.wait(3, () => kbgame.go("game-over"))
 		}
 	})

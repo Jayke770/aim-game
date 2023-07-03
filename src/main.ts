@@ -66,7 +66,7 @@ kbgame.scene("game", () => {
 			kbgame.opacity(1),
 			colors[Math.floor((Math.random() * 2))]
 		])
-		kbgame.wait(2, () => btn.destroy())
+		kbgame.wait(10, () => btn.destroy())
 	}
 	//make btn every 10 sec
 	const btnMaker = kbgame.loop(10, () => timer > 0 && makeBtnTarget())

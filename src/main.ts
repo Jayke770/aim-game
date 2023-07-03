@@ -20,8 +20,6 @@ const centerY = screenHeight / 2
 kbgame.loadSprite("game-bg", "sprites/m-dew.jpg")
 kbgame.loadSprite("bean", "sprites/bean.png")
 kbgame.loadSprite("crosshair", "sprites/crosshair.png")
-kbgame.loadSprite("mute", "sprites/mute.svg")
-kbgame.loadSprite("unmute", "sprites/unmute.svg")
 //sound 
 kbgame.loadSound("gun", "sprites/sounds/shot.mp3")
 kbgame.loadSound("shutgun", "sprites/sounds/shutgun.mp3")

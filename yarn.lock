@@ -112,6 +112,24 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.11.tgz#6526c7e1b40d5b9f0a222c6b767c22f6fb97aa57"
   integrity sha512-rQI4cjLHd2hGsM1LqgDI7oOCYbQ6IBOVsX9ejuRMSze0GqXUG2ekwiKkiBU1pRGSeCqFFHxTrcEydB2Hyoz9CA==
 
+"@types/ms@^0.7.31":
+  version "0.7.31"
+  resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+  integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+
+create-serve@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/create-serve/-/create-serve-1.0.1.tgz#a52ec4cbd2d0f776d3e42338fa1f0dae69080c59"
+  integrity sha512-cDAmBGhkwolS7ihq7SnPE8KwjYUZl5FaI9Pq5ZBwNelSKvFR9OoAA4/B5BfB/NC+eYaykBpX9RVMfuU4DHtrPw==
+
+esbuild-serve@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/esbuild-serve/-/esbuild-serve-1.0.1.tgz#c388c8ff184477ec6b6278d615da8d3177e5174f"
+  integrity sha512-VvYDThNuwg+YAuZC+RqAgw9TpEVGoDdcvm2mTL0lU+TxDXr+QGZfJ+zc6m7cXeJ940qijvdTSZl3mQbRGN4/PA==
+  dependencies:
+    create-serve "^1.0.1"
+    esbuild "^0.9.0"
+
 esbuild@^0.18.11:
   version "0.18.11"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.18.11.tgz#cbf94dc3359d57f600a0dbf281df9b1d1b4a156e"
@@ -140,10 +158,20 @@ esbuild@^0.18.11:
     "@esbuild/win32-ia32" "0.18.11"
     "@esbuild/win32-x64" "0.18.11"
 
+esbuild@^0.9.0:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.7.tgz#ea0d639cbe4b88ec25fbed4d6ff00c8d788ef70b"
+  integrity sha512-VtUf6aQ89VTmMLKrWHYG50uByMF4JQlVysb8dmg6cOgW8JnFCipmz7p+HNBl+RR3LLCuBxFGVauAe2wfnF9bLg==
+
 kaboom@^3000.0.14:
   version "3000.0.14"
   resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-3000.0.14.tgz#0251c81b9b295507f149dc3803c6768c81cd66cd"
   integrity sha512-9FUfnsBKEjk9TLmwcRJ4ZuIbRMtvbS5eZ5PiymWbFNiCODmIgPtfGxK1QmNj1PNgd6NXx9VpW3RpHq6J2Xx/SQ==
+
+ms@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
+  integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
 typescript@^5.1.6:
   version "5.1.6"

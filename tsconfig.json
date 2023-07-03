@@ -2,7 +2,14 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"target": "esnext",
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"./*"
+			]
+		}
 	},
 	"include": [
 		"src/**/*.ts"

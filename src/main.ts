@@ -119,10 +119,6 @@ kbgame.scene("main", () => {
 		kbgame.opacity(0.2)
 	])
 	kbgame.add([
-		kbgame.sprite("mute"),
-		kbgame.pos(centerX, centerY - (screenHeight * 0.08) - (isMobile ? 10 : 1)),
-	])
-	kbgame.add([
 		kbgame.text("BFS Aim Trainer", {
 			align: "center",
 			font: 'f1',

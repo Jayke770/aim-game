@@ -32,7 +32,8 @@ kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 kbgame.scene("game", () => {
 	let score = 0,
 		timer = 120,
-		lastClick = Date.now()
+		lastClick = Date.now(),
+		makeNew = true
 	kbgame.add([
 		kbgame.sprite("game-bg", { width: kbgame.width(), height: kbgame.height() }),
 		kbgame.opacity(0.5)
@@ -53,19 +54,23 @@ kbgame.scene("game", () => {
 	const makeBtnTarget = () => {
 		const x = Math.floor((Math.random() * (kbgame.width() - 100))) + 100
 		const y = Math.floor((Math.random() * (kbgame.height() - 100))) + 100
-		kbgame.add([
-			"btntarget",
-			{
-				btnid: "test",
-				created: new Date()
-			},
-			kbgame.pos(x, y),
-			kbgame.area({ cursor: "pointer" }),
-			kbgame.circle(screenHeight * 0.05),
-			kbgame.fadeIn(0.5),
-			kbgame.opacity(1),
-			colors[Math.floor((Math.random() * 2))]
-		])
+		const targets = kbgame.get("btntarget").length
+		if (targets <= 1) {
+			const btn = kbgame.add([
+				"btntarget",
+				{
+					btnid: "test",
+					created: new Date()
+				},
+				kbgame.pos(x, y),
+				kbgame.area({ cursor: "pointer" }),
+				kbgame.circle(screenHeight * 0.05),
+				kbgame.fadeIn(0.5),
+				kbgame.opacity(1),
+				colors[Math.floor((Math.random() * 2))]
+			])
+			kbgame.wait(5, () => btn.destroy())
+		}
 	}
 	makeBtnTarget()
 	kbgame.onClick("btntarget", (btn: BtnTargetObj) => {
@@ -81,9 +86,9 @@ kbgame.scene("game", () => {
 		if (timer > 0) makeBtnTarget()
 	})
 	//make btn every 10 sec
-	// const btnMaker = kbgame.loop(30, () => {
-	// 	if (timer > 0) makeBtnTarget()
-	// })
+	const btnMaker = kbgame.loop(5, () => {
+		if (timer > 0) makeBtnTarget()
+	})
 	//timer 
 	const timeData = kbgame.loop(1, () => {
 		if (timer > 0) {
@@ -91,7 +96,7 @@ kbgame.scene("game", () => {
 			timeText.text = formatTime(timer)
 		} else {
 			timeData.cancel()
-			// btnMaker.cancel()
+			btnMaker.cancel()
 			kbgame.wait(3, () => kbgame.go("game-over"))
 		}
 	})

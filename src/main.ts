@@ -94,7 +94,7 @@ kbgame.scene("main", () => {
 	])
 	kbgame.add([
 		kbgame.pos(startGameBtn.pos),
-		kbgame.text("Start", { font: "f1", size: 20 }),
+		kbgame.text("Start", { font: "f1", size: 20, }),
 		kbgame.color(255, 255, 255),
 		kbgame.anchor("center"),
 	])

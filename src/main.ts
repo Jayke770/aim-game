@@ -25,7 +25,6 @@ kbgame.loadSprite("crosshair", "sprites/crosshair.png")
 kbgame.loadSound("gun", "sprites/sounds/shot.mp3")
 kbgame.loadSound("shutgun", "sprites/sounds/shutgun.mp3")
 kbgame.loadSound("bg-music", "sprites/sounds/bg-music.mp3")
-kbgame.lo
 //fonts 
 kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 //game screen
@@ -261,6 +260,9 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 })
+kbgame.add([
+
+])
 const start = () => {
 	WebApp.ready()
 	WebApp.expand()

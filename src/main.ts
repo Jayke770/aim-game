@@ -275,5 +275,5 @@ WebApp.expand()
 WebApp.BackButton.show()
 WebApp.BackButton.onClick(() => {
 	WebApp.BackButton.hide()
-	window?.history.back()
+	window?.location.assign("https://bfs.teamdao.app")
 })

@@ -2,6 +2,7 @@ import kaboom, { AnchorComp, AreaComp, ColorComp, GameObj, PosComp, RectComp } f
 import ms from 'ms'
 import { BtnTargetObj, GameOverData } from '@/types/game'
 import { formatTime } from '@/src/lib/utils'
+import WebApp from "@twa-dev/sdk"
 const kbgame = kaboom({
 	global: false,
 	canvas: document.querySelector("#game"),
@@ -260,5 +261,9 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 })
-const start = () => kbgame.go("main")
+const start = () => {
+	WebApp.ready()
+	WebApp.expand()
+	kbgame.go("main")
+}
 requestAnimationFrame(start)

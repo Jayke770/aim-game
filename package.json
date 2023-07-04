@@ -8,6 +8,7 @@
 		"build-css": "npx tailwindcss -i ./src/style.css -o ./www/style.css --watch --minify"
 	},
 	"dependencies": {
+		"@twa-dev/sdk": "^6.7.0",
 		"kaboom": "^3000.0.14",
 		"ms": "^2.1.3"
 	},

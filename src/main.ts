@@ -2,7 +2,6 @@ import kaboom, { AnchorComp, AreaComp, ColorComp, GameObj, PosComp, RectComp } f
 import ms from 'ms'
 import { BtnTargetObj, GameOverData } from '@/types/game'
 import { formatTime } from '@/src/lib/utils'
-import WebApp from "@twa-dev/sdk"
 const kbgame = kaboom({
 	global: false,
 	canvas: document.querySelector("#game"),
@@ -270,10 +269,3 @@ kbgame.scene("game-over", (data: GameOverData) => {
 })
 const start = () => kbgame.go("main")
 requestAnimationFrame(start)
-WebApp.ready()
-WebApp.expand()
-WebApp.BackButton.show()
-WebApp.BackButton.onClick(() => {
-	WebApp.BackButton.hide()
-	window?.location.assign("https://bfs.teamdao.app")
-})

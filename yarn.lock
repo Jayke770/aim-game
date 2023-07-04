@@ -112,18 +112,6 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.11.tgz#6526c7e1b40d5b9f0a222c6b767c22f6fb97aa57"
   integrity sha512-rQI4cjLHd2hGsM1LqgDI7oOCYbQ6IBOVsX9ejuRMSze0GqXUG2ekwiKkiBU1pRGSeCqFFHxTrcEydB2Hyoz9CA==
 
-"@twa-dev/sdk@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@twa-dev/sdk/-/sdk-6.7.0.tgz#81d2ac5e8d30e829ba1fc68b8df60f1c677aea8c"
-  integrity sha512-/fcEgnMnY8lpWOKQ6LLpSoH/WjPaSYheUBgTYNUuJzP1+Q1QGtC3BwKpwF4qIxkxtPpusn/xjEHQxwrVpQw6oQ==
-  dependencies:
-    "@twa-dev/types" "^6.7.0"
-
-"@twa-dev/types@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@twa-dev/types/-/types-6.7.0.tgz#0a584202ff376195b46b907bd8348de642a1c103"
-  integrity sha512-2QtS8oQeHkZvKAsTxqvFGdZOrR7Jc4N9rzJFEIj5e7lC5dqayIatSAh91qmGULjzxOd4sqyWqq1XF6DwZnwldQ==
-
 "@types/ms@^0.7.31":
   version "0.7.31"
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"

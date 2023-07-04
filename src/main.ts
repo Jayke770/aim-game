@@ -10,8 +10,8 @@ const kbgame = kaboom({
 })
 const isMobile = kbgame.isTouchscreen()
 const colors = [
-	kbgame.color(255, 1, 152),
-	kbgame.color(2, 155, 222)
+	kbgame.color(255, 1, 152), //pink
+	kbgame.color(2, 155, 222) //blue
 ]
 const screenWidth = kbgame.width()
 const screenHeight = kbgame.height()
@@ -30,7 +30,9 @@ kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 //game screen
 kbgame.scene("game", () => {
 	let score = 0,
-		timer = 30,
+		timer = 10,
+		blue = 0,
+		pink = 0,
 		lastClick = Date.now()
 	const gameBg = kbgame.add([
 		kbgame.sprite("game-bg", { width: kbgame.width(), height: kbgame.height() }),
@@ -62,19 +64,22 @@ kbgame.scene("game", () => {
 		const x = Math.floor((Math.random() * (kbgame.width() - 100))) + 100
 		const y = Math.floor((Math.random() * (kbgame.height() - 100))) + 100
 		const targets = kbgame.get("btntarget").length
+		const Btnindex = Math.floor((Math.random() * 2))
+		console.log(Btnindex)
 		if (targets <= 1) {
 			const btn = kbgame.add([
 				"btntarget",
 				{
 					btnid: "test",
-					created: new Date()
+					created: new Date(),
+					buttonColor: Btnindex
 				},
 				kbgame.pos(x, y),
 				kbgame.area({ cursor: "pointer" }),
 				kbgame.circle(screenHeight * 0.05),
 				kbgame.fadeIn(0.5),
 				kbgame.opacity(1),
-				colors[Math.floor((Math.random() * 2))]
+				colors[Btnindex]
 			])
 			kbgame.wait(5, () => btn.destroy())
 		}
@@ -90,6 +95,8 @@ kbgame.scene("game", () => {
 		btn.destroy()
 		score += 1
 		scoreText.text = `Score: ${score}`
+		if (btn.buttonColor === 0) pink += 1
+		if (btn.buttonColor === 1) blue += 1
 		if (timer > 0) makeBtnTarget()
 	})
 	//make btn every 10 sec
@@ -106,7 +113,7 @@ kbgame.scene("game", () => {
 			gameBg.opacity = 0.2
 			timeData.cancel()
 			btnMaker.cancel()
-			kbgame.wait(1, () => kbgame.go("game-over", { score }))
+			kbgame.wait(1, () => kbgame.go("game-over", { score, blue, pink }))
 		}
 	})
 })
@@ -150,6 +157,7 @@ kbgame.scene("main", () => {
 
 //game over screen 
 kbgame.scene("game-over", (data: GameOverData) => {
+	console.log(data)
 	kbgame.add([
 		kbgame.sprite("game-bg", { width: kbgame.width(), height: kbgame.height() }),
 		kbgame.opacity(0.2)
@@ -225,7 +233,7 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 	kbgame.add([
-		kbgame.text("0", { font: 'f1', size: Math.min(screenWidth, screenHeight) * 0.04 }),
+		kbgame.text(`${data?.blue ?? 0}`, { font: 'f1', size: Math.min(screenWidth, screenHeight) * 0.04 }),
 		kbgame.pos(kbgame.width() * 0.9 - (10 * 2), (kbgame.height() - kbgame.height() * 0.7) + (40 * (isMobile ? 4 : 2))),
 		kbgame.anchor("right"),
 		kbgame.color(2, 155, 222),
@@ -239,7 +247,7 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 	kbgame.add([
-		kbgame.text("0", { font: 'f1', size: Math.min(screenWidth, screenHeight) * 0.04 }),
+		kbgame.text(`${data?.pink ?? 0}`, { font: 'f1', size: Math.min(screenWidth, screenHeight) * 0.04 }),
 		kbgame.pos(kbgame.width() * 0.9 - (10 * 2), (kbgame.height() - kbgame.height() * 0.7) + (40 * (isMobile ? 6 : 3))),
 		kbgame.anchor("right"),
 		kbgame.color(2, 155, 222),

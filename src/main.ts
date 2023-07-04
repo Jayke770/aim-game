@@ -30,7 +30,7 @@ kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 //game screen
 kbgame.scene("game", () => {
 	let score = 0,
-		timer = 10,
+		timer = 30,
 		blue = 0,
 		pink = 0,
 		lastClick = Date.now()

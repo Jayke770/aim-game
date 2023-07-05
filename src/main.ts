@@ -268,10 +268,12 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 })
-const start = () => kbgame.go("main")
+const start = () => {
+	WebApp.BackButton.show()
+	WebApp.BackButton.onClick(() => {
+		WebApp.BackButton.hide()
+		window?.history?.back()
+	})
+	kbgame.go("main")
+}
 requestAnimationFrame(start)
-WebApp.BackButton.show()
-WebApp.BackButton.onClick(() => {
-	WebApp.BackButton.hide()
-	window?.history?.back()
-})

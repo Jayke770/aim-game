@@ -2,13 +2,12 @@ import kaboom, { AnchorComp, AreaComp, ColorComp, GameObj, PosComp, RectComp } f
 import ms from 'ms'
 import { BtnTargetObj, GameOverData } from '@/types/game'
 import { formatTime } from '@/src/lib/utils'
-import WebApp from "@twa-dev/sdk"
 const kbgame = kaboom({
 	global: false,
 	canvas: document.querySelector("#game"),
 	background: [0, 0, 0],
 })
-const isMobile = kbgame.isTouchscreen()
+const isMobile = false
 const colors = [
 	kbgame.color(255, 1, 152), //pink
 	kbgame.color(2, 155, 222) //blue
@@ -268,12 +267,5 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 })
-const start = () => {
-	WebApp.BackButton.show()
-	WebApp.BackButton.onClick(() => {
-		WebApp.BackButton.hide()
-		window?.history?.back()
-	})
-	kbgame.go("main")
-}
+const start = () => kbgame.go("main")
 requestAnimationFrame(start)

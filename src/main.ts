@@ -2,6 +2,7 @@ import kaboom, { AnchorComp, AreaComp, ColorComp, GameObj, PosComp, RectComp } f
 import ms from 'ms'
 import { BtnTargetObj, GameOverData } from '@/types/game'
 import { formatTime } from '@/src/lib/utils'
+import WebApp from "@twa-dev/sdk"
 const kbgame = kaboom({
 	global: false,
 	canvas: document.querySelector("#game"),
@@ -29,7 +30,7 @@ kbgame.loadFont("f1", "sprites/fonts/f1.ttf")
 //game screen
 kbgame.scene("game", () => {
 	let score = 0,
-		timer = 30,
+		timer = 5,
 		blue = 0,
 		pink = 0,
 		lastClick = Date.now()
@@ -125,7 +126,7 @@ kbgame.scene("main", () => {
 		kbgame.opacity(0.2)
 	])
 	kbgame.add([
-		kbgame.text("BFS Aim Trainer", {
+		kbgame.text("TRIGGA FINGA", {
 			align: "center",
 			font: 'f1',
 			size: (Math.min(screenWidth, screenHeight) * 0.05) + (isMobile ? 10 : 5),
@@ -267,5 +268,10 @@ kbgame.scene("game-over", (data: GameOverData) => {
 		kbgame.area()
 	])
 })
-const start = () => kbgame.go("main")
+const start = () => kbgame.go("game-over")
 requestAnimationFrame(start)
+WebApp.BackButton.show()
+WebApp.BackButton.onClick(() => {
+	WebApp.BackButton.hide()
+	window?.history?.back()
+})
